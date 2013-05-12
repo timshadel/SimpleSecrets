@@ -7,10 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0335B41173F347D00B6F01C /* Primitives.m in Sources */ = {isa = PBXBuildFile; fileRef = B0335B40173F347D00B6F01C /* Primitives.m */; };
+		B0335B4B173F37B300B6F01C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04DCE07173F325000E62CA1 /* SenTestingKit.framework */; };
+		B0335B4C173F37B300B6F01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04DCE09173F325000E62CA1 /* UIKit.framework */; };
+		B0335B4D173F37B300B6F01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D6173F319700275A2D /* Foundation.framework */; };
+		B0335B53173F37B300B6F01C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0335B51173F37B300B6F01C /* InfoPlist.strings */; };
+		B03783CA173F3BCC000D8D09 /* PrimitivesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */; };
+		B03783CD173F3E0D000D8D09 /* libSimpleSecrets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */; };
+		B03783CF173F3E5F000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
+		B03783D0173F3E80000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
 		B0F7C4D7173F319700275A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D6173F319700275A2D /* Foundation.framework */; };
 		B0F7C4DC173F319700275A2D /* SimpleSecrets.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0F7C4DB173F319700275A2D /* SimpleSecrets.h */; };
 		B0F7C4DE173F319700275A2D /* SimpleSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7C4DD173F319700275A2D /* SimpleSecrets.m */; };
+		B562B3E71E16404DBA8D6E09 /* libPods-SimpleSecretsSpecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2DA8E49824D81AAE21568 /* libPods-SimpleSecretsSpecs.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B03783CB173F3DF3000D8D09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0F7C4CB173F319700275A2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0F7C4D2173F319700275A2D;
+			remoteInfo = SimpleSecrets;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B0F7C4D1173F319700275A2D /* CopyFiles */ = {
@@ -26,6 +46,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38B2DA8E49824D81AAE21568 /* libPods-SimpleSecretsSpecs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleSecretsSpecs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C538F14979749B1AEADCB18 /* Pods-SimpleSecretsSpecs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleSecretsSpecs.xcconfig"; path = "Pods/Pods-SimpleSecretsSpecs.xcconfig"; sourceTree = SOURCE_ROOT; };
+		96FAD54517954F9D862C1EAD /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0335B3F173F347D00B6F01C /* Primitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Primitives.h; sourceTree = "<group>"; };
+		B0335B40173F347D00B6F01C /* Primitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Primitives.m; sourceTree = "<group>"; };
+		B0335B4A173F37B300B6F01C /* SimpleSecretsSpecs.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleSecretsSpecs.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0335B50173F37B300B6F01C /* SimpleSecretsSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleSecretsSpecs-Info.plist"; sourceTree = "<group>"; };
+		B0335B52173F37B300B6F01C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B0335B57173F37B300B6F01C /* SimpleSecretsSpecs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleSecretsSpecs-Prefix.pch"; sourceTree = "<group>"; };
+		B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitivesSpec.m; sourceTree = "<group>"; };
+		B03783CE173F3E5F000D8D09 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B04DCE07173F325000E62CA1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B04DCE09173F325000E62CA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleSecrets.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F7C4D6173F319700275A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0F7C4DA173F319700275A2D /* SimpleSecrets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleSecrets-Prefix.pch"; sourceTree = "<group>"; };
@@ -34,10 +67,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B0335B46173F37B300B6F01C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03783D0173F3E80000D8D09 /* Security.framework in Frameworks */,
+				B03783CD173F3E0D000D8D09 /* libSimpleSecrets.a in Frameworks */,
+				B0335B4B173F37B300B6F01C /* SenTestingKit.framework in Frameworks */,
+				B0335B4C173F37B300B6F01C /* UIKit.framework in Frameworks */,
+				B0335B4D173F37B300B6F01C /* Foundation.framework in Frameworks */,
+				B562B3E71E16404DBA8D6E09 /* libPods-SimpleSecretsSpecs.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B0F7C4D0173F319700275A2D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03783CF173F3E5F000D8D09 /* Security.framework in Frameworks */,
 				B0F7C4D7173F319700275A2D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,12 +92,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0335B4E173F37B300B6F01C /* SimpleSecretsSpecs */ = {
+			isa = PBXGroup;
+			children = (
+				B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */,
+				B0335B4F173F37B300B6F01C /* Supporting Files */,
+			);
+			path = SimpleSecretsSpecs;
+			sourceTree = "<group>";
+		};
+		B0335B4F173F37B300B6F01C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0335B50173F37B300B6F01C /* SimpleSecretsSpecs-Info.plist */,
+				B0335B51173F37B300B6F01C /* InfoPlist.strings */,
+				B0335B57173F37B300B6F01C /* SimpleSecretsSpecs-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B0F7C4CA173F319700275A2D = {
 			isa = PBXGroup;
 			children = (
+				B03783CE173F3E5F000D8D09 /* Security.framework */,
 				B0F7C4D8173F319700275A2D /* SimpleSecrets */,
+				B0335B4E173F37B300B6F01C /* SimpleSecretsSpecs */,
 				B0F7C4D5173F319700275A2D /* Frameworks */,
 				B0F7C4D4173F319700275A2D /* Products */,
+				4C538F14979749B1AEADCB18 /* Pods-SimpleSecretsSpecs.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */,
+				B0335B4A173F37B300B6F01C /* SimpleSecretsSpecs.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				B0F7C4D6173F319700275A2D /* Foundation.framework */,
+				B04DCE07173F325000E62CA1 /* SenTestingKit.framework */,
+				B04DCE09173F325000E62CA1 /* UIKit.framework */,
+				96FAD54517954F9D862C1EAD /* libPods-KiwiUnitTest.a */,
+				38B2DA8E49824D81AAE21568 /* libPods-SimpleSecretsSpecs.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,6 +149,8 @@
 			children = (
 				B0F7C4DB173F319700275A2D /* SimpleSecrets.h */,
 				B0F7C4DD173F319700275A2D /* SimpleSecrets.m */,
+				B0335B3F173F347D00B6F01C /* Primitives.h */,
+				B0335B40173F347D00B6F01C /* Primitives.m */,
 				B0F7C4D9173F319700275A2D /* Supporting Files */,
 			);
 			path = SimpleSecrets;
@@ -91,6 +167,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B0335B49173F37B300B6F01C /* SimpleSecretsSpecs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0335B58173F37B300B6F01C /* Build configuration list for PBXNativeTarget "SimpleSecretsSpecs" */;
+			buildPhases = (
+				4378AA516F4C4FCA92CBBEBA /* Check Pods Manifest.lock */,
+				B0335B45173F37B300B6F01C /* Sources */,
+				B0335B46173F37B300B6F01C /* Frameworks */,
+				B0335B47173F37B300B6F01C /* Resources */,
+				B0335B48173F37B300B6F01C /* ShellScript */,
+				AFE74426537A4911860B9C2E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B03783CC173F3DF3000D8D09 /* PBXTargetDependency */,
+			);
+			name = SimpleSecretsSpecs;
+			productName = SimpleSecretsSpecs;
+			productReference = B0335B4A173F37B300B6F01C /* SimpleSecretsSpecs.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		B0F7C4D2173F319700275A2D /* SimpleSecrets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0F7C4E1173F319700275A2D /* Build configuration list for PBXNativeTarget "SimpleSecrets" */;
@@ -130,22 +227,138 @@
 			projectRoot = "";
 			targets = (
 				B0F7C4D2173F319700275A2D /* SimpleSecrets */,
+				B0335B49173F37B300B6F01C /* SimpleSecretsSpecs */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		B0335B47173F37B300B6F01C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0335B53173F37B300B6F01C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4378AA516F4C4FCA92CBBEBA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		AFE74426537A4911860B9C2E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-SimpleSecretsSpecs-resources.sh\"\n";
+		};
+		B0335B48173F37B300B6F01C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		B0335B45173F37B300B6F01C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03783CA173F3BCC000D8D09 /* PrimitivesSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B0F7C4CF173F319700275A2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B0F7C4DE173F319700275A2D /* SimpleSecrets.m in Sources */,
+				B0335B41173F347D00B6F01C /* Primitives.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B03783CC173F3DF3000D8D09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0F7C4D2173F319700275A2D /* SimpleSecrets */;
+			targetProxy = B03783CB173F3DF3000D8D09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B0335B51173F37B300B6F01C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0335B52173F37B300B6F01C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		B0335B59173F37B300B6F01C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C538F14979749B1AEADCB18 /* Pods-SimpleSecretsSpecs.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleSecretsSpecs/SimpleSecretsSpecs-Prefix.pch";
+				INFOPLIST_FILE = "SimpleSecretsSpecs/SimpleSecretsSpecs-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B0335B5A173F37B300B6F01C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C538F14979749B1AEADCB18 /* Pods-SimpleSecretsSpecs.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleSecretsSpecs/SimpleSecretsSpecs-Prefix.pch";
+				INFOPLIST_FILE = "SimpleSecretsSpecs/SimpleSecretsSpecs-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		B0F7C4DF173F319700275A2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -202,30 +415,43 @@
 		B0F7C4E2173F319700275A2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libSimpleSecrets.a";
 				DSTROOT = /tmp/SimpleSecrets.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleSecrets/SimpleSecrets-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
 		};
 		B0F7C4E3173F319700275A2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libSimpleSecrets.a";
 				DSTROOT = /tmp/SimpleSecrets.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleSecrets/SimpleSecrets-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B0335B58173F37B300B6F01C /* Build configuration list for PBXNativeTarget "SimpleSecretsSpecs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0335B59173F37B300B6F01C /* Debug */,
+				B0335B5A173F37B300B6F01C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B0F7C4CE173F319700275A2D /* Build configuration list for PBXProject "SimpleSecrets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -242,6 +468,7 @@
 				B0F7C4E3173F319700275A2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
