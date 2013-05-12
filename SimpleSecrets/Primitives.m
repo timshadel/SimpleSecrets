@@ -9,61 +9,97 @@
 #import "Primitives.h"
 #import <Security/SecRandom.h>
 #import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonCryptor.h>
+
+static NSUInteger kNonceLength = 16;
+static NSUInteger kIVLength = 16;
+static NSUInteger kKeyLength = 32;
+
+static uint8_t zeros[2048] = { 0 };
 
 @implementation Primitives
 
-+ (NSData *)nonce
++ (NSMutableData *)nonce
 {
-    static size_t count = 16;
-    uint8_t bytes[count];
-    memset(bytes, 0, sizeof(bytes));
-    int errCode = SecRandomCopyBytes(kSecRandomDefault, count, bytes);
-    if (-1 == errCode) {
-        memset(bytes, 0, sizeof(bytes));
-        return nil;
-    }
-    NSData *nonce = [NSData dataWithBytes:bytes length:count];
-    memset(bytes, 0, sizeof(bytes));
-    return nonce;
+    return [self mutableRandomDataWithLength:kNonceLength];
 }
 
-+ (NSData *)deriveKeyFromMasterKey:(NSData *)masterKey andRole:(char *)role
++ (NSMutableData *)mutableRandomDataWithLength:(NSUInteger)length
 {
-    if ([masterKey length] != 32) {
+    NSMutableData *random = [NSMutableData dataWithBytes:zeros length:length];
+    int errCode = SecRandomCopyBytes(kSecRandomDefault, random.length, random.mutableBytes);
+    if (-1 == errCode) {
+        memset(random.mutableBytes, 0, random.length);
         return nil;
     }
+    return random;
+}
+
++ (NSMutableData *)deriveKeyFromMasterKey:(NSData *)masterKey andRole:(char *)role
+{
+    if ([masterKey length] != kKeyLength) {
+        return nil;
+    }
+
+    NSMutableData *key = [NSMutableData dataWithBytes:zeros length:kKeyLength];
     
     CC_SHA256_CTX ctx;
     CC_SHA256_Init(&ctx);
     CC_SHA256_Update(&ctx, [masterKey bytes], [masterKey length]);
     CC_SHA256_Update(&ctx, role, strlen(role));
-
-    uint8_t keyBytes[CC_SHA256_DIGEST_LENGTH];
-    CC_SHA256_Final(keyBytes, &ctx);
-    NSData *key = [NSData dataWithBytes:keyBytes length:sizeof(keyBytes)];
-    memset(keyBytes, 0, sizeof(keyBytes));
+    CC_SHA256_Final(key.mutableBytes, &ctx);
     
     return key;
 }
 
-+ (NSData *)deriveSenderHmacKeyFromMasterKey:(NSData *)masterKey
++ (NSMutableData *)deriveSenderHmacKeyFromMasterKey:(NSData *)masterKey
 {
     return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/sender-hmac-key"];
 }
 
-+ (NSData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey
++ (NSMutableData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey
 {
     return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/sender-cipher-key"];
 }
 
-+ (NSData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey
++ (NSMutableData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey
 {
     return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/receiver-hmac-key"];
 }
 
-+ (NSData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey
++ (NSMutableData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey
 {
     return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/receiver-cipher-key"];
+}
+
++ (NSMutableData *)encryptData:(NSData *)data withKey:(NSData *)key
+{
+    // iv + cipher output
+    NSUInteger length = (16 + ceil(data.length * 1.0f / 16) * 16);
+    NSMutableData *cipherData = [NSMutableData dataWithBytes:zeros length:length];
+    size_t cipherDataLength = 0;
+    NSMutableData *iv = [self mutableRandomDataWithLength:kIVLength];
+    [cipherData replaceBytesInRange:NSMakeRange(0, kIVLength) withBytes:iv.bytes];
+
+    CCCryptorStatus
+    result = CCCrypt(kCCEncrypt, // operation
+                     kCCAlgorithmAES128, // Algorithm
+                     kCCOptionPKCS7Padding, // options
+                     key.bytes, // key
+                     key.length, // keylength
+                     iv.bytes,// iv
+                     data.bytes, // dataIn
+                     data.length, // dataInLength,
+                     cipherData.mutableBytes+16, // dataOut
+                     cipherData.length-16, // dataOutAvailable
+                     &cipherDataLength); // dataOutMoved
+
+    [iv replaceBytesInRange:NSMakeRange(0, kIVLength) withBytes:zeros];
+    if (result == kCCSuccess) {
+		//the returned NSData takes ownership of the buffer and will free it on deallocation
+		return cipherData;
+	}
+    return nil;
 }
 
 @end

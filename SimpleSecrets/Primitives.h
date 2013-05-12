@@ -10,10 +10,12 @@
 
 @interface Primitives : NSObject
 
-+ (NSData *)nonce;
-+ (NSData *)deriveSenderHmacKeyFromMasterKey:(NSData *)masterKey;
-+ (NSData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey;
-+ (NSData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey;
-+ (NSData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey;
++ (NSMutableData *)nonce;
++ (NSMutableData *)deriveSenderHmacKeyFromMasterKey:(NSData *)masterKey;
++ (NSMutableData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey;
++ (NSMutableData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey;
++ (NSMutableData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey;
+
++ (NSMutableData *)encryptData:(NSData *)data withKey:(NSData *)key;
 
 @end

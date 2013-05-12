@@ -87,6 +87,238 @@ describe(@"primitive crypto functions", ^{
         });
     });
 
+    describe(@"encrypt()", ^{
+        it(@"should encrypt data using a 256-bit key", ^{
+            NSData *key = makeData(0xcd, 32);
+            NSData *data = makeData(0x11, 25);
+            
+            NSData *binmessage = [Primitives encryptData:data withKey:key];
+            NSData *iv = [binmessage subdataWithRange:NSMakeRange(0,16)];
+            NSData *ciphertext = [binmessage subdataWithRange:NSMakeRange(16, binmessage.length - 16)];
+
+            [binmessage shouldNotBeNil];
+            [[theValue([binmessage length]) should] equal:theValue(48)];
+
+            [[theValue(iv.length) should] equal:theValue(16)];
+            [[theValue(ciphertext.length) should] equal:theValue(32)];
+            // Try to decipher it...
+//            var recovered = primitives.decrypt(ciphertext, key, iv);
+//            expect(recovered).to.eql(data);
+//            expect(recovered).to.not.equal(data);
+        });
+        
+//        it(@"should return a Buffer of (iv || ciphertext)", ^{
+//            NSData *key = makeData(0xcd, 32);
+//            NSData *data = makeData(0x11, 25);
+//            
+//            var output = primitives.encrypt(data, key);
+//            expect(output).to.be.a(Buffer);
+//            // 16-byte IV, 32 bytes to encrypt the 25 data bytes
+//            expect(output).to.have.length(48);
+//        });
+    });
+    
+//    describe(@"decrypt()", ^{
+//        it(@"should decrypt data using a 256-bit key", ^{
+//            NSData *key = makeData(0xcd, 32);
+//            NSData *plaintext = makeData(0x11, 25);
+//            var iv = new Buffer('d4a5794c81015dde3b9b0648f2b9f5b9', 'hex');
+//            var ciphertext = new Buffer('cb7f804ec83617144aa261f24af07023a91a3864601a666edea98938f2702dbc', 'hex');
+//            
+//            var recovered = primitives.decrypt(ciphertext, key, iv);
+//            expect(recovered).to.eql(plaintext);
+//            expect(recovered).to.not.equal(plaintext);
+//        });
+//    });
+//    
+//    describe(@"identify()", ^{
+//        it(@"should calculate an id for a key", ^{
+//            NSData *key = makeData(0xab, 32);
+//            var id = primitives.identify(key);
+//            
+//            expect(id).to.have.length(6);
+//            expect(id).to.eql(new Buffer('0d081b0889d7', 'hex'));
+//        });
+//    });
+//    
+//    describe(@"mac()", ^{
+//        it(@"should create a message authentication code", ^{
+//            NSData *key = makeData(0x9f, 32);
+//            NSData *data = makeData(0x11, 25);
+//            var mac = primitives.mac(data, key);
+//            
+//            expect(mac).to.have.length(32);
+//            expect(mac).to.eql(new Buffer('adf1793fdef44c54a2c01513c0c7e4e71411600410edbde61558db12d0a01c65', 'hex'));
+//        });
+//    });
+//    
+//    describe(@"compare()", ^{
+//        it(@"should correctly distinguish data equality", ^{
+//            NSData *a = makeData(0x11, 25);
+//            NSData *b = makeData(0x12, 25);
+//            NSData *c = makeData(0x11, 25);
+//            
+//            expect(primitives.compare(a,a)).to.be.ok();
+//            expect(primitives.compare(a,b)).to.not.be.ok();
+//            expect(primitives.compare(a,c)).to.be.ok();
+//        });
+//        
+//        // This works fine locally, but has tons of variation on build server
+//        it.skip('should take just as long to compare different data as identical data', function() {
+//            NSData *a = makeData(0xff, 250000);
+//            NSData *b = makeData(0x00, 250000);
+//            NSData *c = makeData(0xff, 250000);
+//            
+//            var benchAA = benchmark(primitives.compare, a, a);
+//            var benchAB = benchmark(primitives.compare, a, b);
+//            var benchAC = benchmark(primitives.compare, a, c);
+//            
+//            var naiveAA = benchmark(naiveEquals, a, a);
+//            var naiveAB = benchmark(naiveEquals, a, b);
+//            var naiveAC = benchmark(naiveEquals, a, c);
+//            
+//            // All constant-time comparisons should be roughly equal in time
+//            expect(difference(benchAA, benchAB)).to.be.greaterThan(0.95);
+//            expect(difference(benchAA, benchAC)).to.be.greaterThan(0.95);
+//            expect(difference(benchAB, benchAC)).to.be.greaterThan(0.95);
+//            
+//            // Naive comparisons of the same item with itself, or with obviously
+//            // different items should be ridiculously fast
+//            expect(difference(benchAA, naiveAA)).to.be.lessThan(0.01);
+//            expect(difference(benchAB, naiveAB)).to.be.lessThan(0.01);
+//            
+//            // It should take just about as long to compare identical arrays as the constant time compare
+//            expect(difference(benchAC, naiveAC)).to.be.greaterThan(0.90);
+//            
+//            function naiveEquals(a, b) {
+//                if (a === b) return true;
+//                for (var i = 0; i < a.length; i++) {
+//                    if (a[i] !== b[i]) {
+//                        return false;
+//                    }
+//                }
+//                return true;
+//            }
+//            
+//            function benchmark(fn, a, b) {
+//                var time = process.hrtime();
+//                for (var i = 0; i < 100; i++) {
+//                    fn(a, b);
+//                };
+//                var diff = process.hrtime(time);
+//                return diff[0] * 1e9 + diff[1];
+//            }
+//            
+//            function difference(first, second) {
+//                var smaller = Math.min(first, second);
+//                var larger = Math.max(first, second);
+//                return (smaller / larger);
+//            }
+//            
+//        });
+//    });
+//    
+//    describe(@"binify()", ^{
+//        it(@"should require a base64url string", ^{
+//            expect(function(){ primitives.binify(123); }).to.throwException(/string required/i);
+//            expect(function(){ primitives.binify('arstnei; another.'); }).to.throwException(/base64url/i);
+//            expect(function(){ primitives.binify('cartinir90_-'); }).to.not.throwException();
+//        });
+//        
+//        it(@"should return a Buffer", ^{
+//            var bin = primitives.binify('abcd');
+//            expect(bin).to.be.a(Buffer);
+//            expect(bin).to.have.length(3);
+//        });
+//    });
+//    
+//    describe(@"stringify()", ^{
+//        it(@"should require a buffer", ^{
+//            NSData *buf = makeData(0x32, 10);
+//            expect(function(){ primitives.stringify(''); }).to.throwException(/not a buffer/i);
+//            expect(function(){ primitives.stringify(buf); }).not.to.throwException();
+//        });
+//        
+//        it(@"should return a base64url string", ^{
+//            NSData *buf = makeData(0x32, 10);
+//            var str = primitives.stringify(buf);
+//            expect(str).to.be.a('string');
+//            expect(str).to.have.length(14);
+//            expect(str).to.match(/^[a-zA-Z0-9_-]+$/);
+//        });
+//    });
+//    
+//    describe(@"serialize()", ^{
+//        it(@"should accept javascript object", ^{
+//            expect(function(){ primitives.serialize(1); }).to.not.throwException();
+//            expect(function(){ primitives.serialize('a'); }).to.not.throwException();
+//            expect(function(){ primitives.serialize([]); }).to.not.throwException();
+//            expect(function(){ primitives.serialize({}); }).to.not.throwException();
+//        });
+//        
+//        it(@"should return a Buffer", ^{
+//            var bin = primitives.serialize('abcd');
+//            expect(bin).to.be.a(Buffer);
+//            expect(bin).to.have.length(5);
+//        });
+//    });
+//    
+//    describe(@"deserialize()", ^{
+//        it(@"should require a buffer", ^{
+//            NSData *buf = makeData(0x32, 10);
+//            expect(function(){ primitives.deserialize(''); }).to.throwException(/not a buffer/i);
+//            expect(function(){ primitives.deserialize(buf); }).not.to.throwException();
+//        });
+//        
+//        it(@"should return a javascript primitive or object", ^{
+//            expect(primitives.deserialize(primitives.serialize(1))).to.eql(1);
+//            expect(primitives.deserialize(primitives.serialize('abcd'))).to.eql('abcd');
+//            expect(primitives.deserialize(primitives.serialize([]))).to.eql([]);
+//            expect(primitives.deserialize(primitives.serialize({}))).to.eql({});
+//        });
+//    });
+//    
+//    describe(@"zero()", ^{
+//        
+//        it(@"should require a Buffer", ^{
+//            expect(function(){ primitives.zero({}); }).to.throwException(/not a buffer/i);
+//        });
+//        
+//        it(@"should overwrite all buffer contents with zeros", ^{
+//            var b = new Buffer([74, 68, 69, 73, 20, 69, 73, 20, 73, 0x6f, 0x6d, 65]);
+//            var z = new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+//            
+//            // different contents
+//            expect(b).not.to.eql(z);
+//            
+//            primitives.zero(b);
+//            
+//            // different identity, same contents
+//            expect(b).not.to.equal(z);
+//            expect(b).to.eql(z);
+//        });
+//        
+//        it(@"should zero multiple buffers", ^{
+//            var b = new Buffer([74, 68, 69, 73, 20, 69, 73, 20, 73, 0x6f, 0x6d, 65]);
+//            var c = new Buffer([69, 73, 20, 73, 0x6f, 0x6d, 65, 74, 68, 69, 73, 20]);
+//            var z = new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+//            
+//            // different contents
+//            expect(b).not.to.eql(z);
+//            expect(c).not.to.eql(z);
+//            
+//            primitives.zero(b, c);
+//            
+//            // different identity, same contents
+//            expect(b).not.to.equal(z);
+//            expect(b).to.eql(z);
+//            expect(c).not.to.equal(z);
+//            expect(c).to.eql(z);
+//        });
+//        
+//    });
+
+    
 });
 
 SPEC_END
