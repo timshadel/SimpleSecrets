@@ -12,5 +12,8 @@
 
 + (NSData *)nonce;
 + (NSData *)deriveSenderHmacKeyFromMasterKey:(NSData *)masterKey;
++ (NSData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey;
++ (NSData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey;
++ (NSData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey;
 
 @end

@@ -51,4 +51,19 @@
     return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/sender-hmac-key"];
 }
 
++ (NSData *)deriveSenderCipherKeyFromMasterKey:(NSData *)masterKey
+{
+    return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/sender-cipher-key"];
+}
+
++ (NSData *)deriveReceiverHmacKeyFromMasterKey:(NSData *)masterKey
+{
+    return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/receiver-hmac-key"];
+}
+
++ (NSData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey
+{
+    return [self deriveKeyFromMasterKey:masterKey andRole:"simple-crypto/receiver-cipher-key"];
+}
+
 @end

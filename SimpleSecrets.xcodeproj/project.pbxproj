@@ -16,6 +16,7 @@
 		B03783CD173F3E0D000D8D09 /* libSimpleSecrets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */; };
 		B03783CF173F3E5F000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
 		B03783D0173F3E80000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
+		B03783D3173F5F43000D8D09 /* hexString.c in Sources */ = {isa = PBXBuildFile; fileRef = B03783D2173F5F43000D8D09 /* hexString.c */; };
 		B0F7C4D7173F319700275A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D6173F319700275A2D /* Foundation.framework */; };
 		B0F7C4DC173F319700275A2D /* SimpleSecrets.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0F7C4DB173F319700275A2D /* SimpleSecrets.h */; };
 		B0F7C4DE173F319700275A2D /* SimpleSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7C4DD173F319700275A2D /* SimpleSecrets.m */; };
@@ -57,6 +58,8 @@
 		B0335B57173F37B300B6F01C /* SimpleSecretsSpecs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleSecretsSpecs-Prefix.pch"; sourceTree = "<group>"; };
 		B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitivesSpec.m; sourceTree = "<group>"; };
 		B03783CE173F3E5F000D8D09 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B03783D2173F5F43000D8D09 /* hexString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hexString.c; sourceTree = "<group>"; };
+		B03783D4173F5F61000D8D09 /* hexString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hexString.h; sourceTree = "<group>"; };
 		B04DCE07173F325000E62CA1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B04DCE09173F325000E62CA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleSecrets.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */,
+				B03783D1173F5F1D000D8D09 /* Utilities */,
 				B0335B4F173F37B300B6F01C /* Supporting Files */,
 			);
 			path = SimpleSecretsSpecs;
@@ -109,6 +113,15 @@
 				B0335B57173F37B300B6F01C /* SimpleSecretsSpecs-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B03783D1173F5F1D000D8D09 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B03783D4173F5F61000D8D09 /* hexString.h */,
+				B03783D2173F5F43000D8D09 /* hexString.c */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		B0F7C4CA173F319700275A2D = {
@@ -293,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B03783CA173F3BCC000D8D09 /* PrimitivesSpec.m in Sources */,
+				B03783D3173F5F43000D8D09 /* hexString.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
