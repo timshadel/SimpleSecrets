@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import <Base64/MF_Base64Additions.h>
 
 static NSUInteger kNonceLength = 16;
 static NSUInteger kIVLength = 16;
@@ -192,7 +193,10 @@ static NSUInteger kIdentLength = 6;
 
 + (NSData *)binify:(NSString *)websafe
 {
-    
+    NSMutableString *base64url = [websafe mutableCopy];
+    [base64url replaceOccurrencesOfString:@"-" withString:@"+" options:0 range:NSMakeRange(0, base64url.length)];
+    [base64url replaceOccurrencesOfString:@"_" withString:@"/" options:0 range:NSMakeRange(0, base64url.length)];
+    return [MF_Base64Codec dataFromBase64String:base64url];
 }
 
 @end

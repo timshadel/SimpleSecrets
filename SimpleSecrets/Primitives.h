@@ -23,5 +23,6 @@
 + (NSMutableData *)macForData:(NSData *)data withKey:(NSData *)key;
 
 + (BOOL)compare:(NSData *)a to:(NSData *)b;
++ (NSData *)binify:(NSString *)websafe;
 
 @end

@@ -227,16 +227,11 @@ describe(@"primitive crypto functions", ^{
 
     
     describe(@"binify()", ^{
-        it(@"should require a base64url string", ^{
-            expect(function(){ primitives.binify(123); }).to.throwException(/string required/i);
-            expect(function(){ primitives.binify('arstnei; another.'); }).to.throwException(/base64url/i);
-            expect(function(){ primitives.binify('cartinir90_-'); }).to.not.throwException();
-        });
-        
-        it(@"should return a Buffer", ^{
-            var bin = primitives.binify('abcd');
-            expect(bin).to.be.a(Buffer);
-            expect(bin).to.have.length(3);
+        it(@"should return a binary version of the string", ^{
+            NSData *binary = [Primitives binify:@"cartinir9_-"];
+            NSData *expected = hexStringToData("71aaed8a78abf7ff");
+            [binary shouldNotBeNil];
+            [[binary should] equal:expected];
         });
     });
     
