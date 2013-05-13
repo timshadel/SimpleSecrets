@@ -1,10 +1,13 @@
 PODS:
   - Kiwi (2.0.6)
+  - MessagePack (1.0.0)
 
 DEPENDENCIES:
   - Kiwi
+  - MessagePack (~> 1.0)
 
 SPEC CHECKSUMS:
   Kiwi: 56082a80f942de4d10423d8d8a599ab30cf50228
+  MessagePack: 66a565c0c34ecdd83a84ae090d1a04ef24c88beb
 
 COCOAPODS: 0.19.1
