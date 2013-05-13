@@ -17,5 +17,11 @@
 + (NSMutableData *)deriveReceiverCipherKeyFromMasterKey:(NSData *)masterKey;
 
 + (NSMutableData *)encryptData:(NSData *)data withKey:(NSData *)key;
++ (NSMutableData *)decryptData:(NSData *)data withKey:(NSData *)key andIV:(NSData *)iv;
+
++ (NSMutableData *)identify:(NSData *)data;
++ (NSMutableData *)macForData:(NSData *)data withKey:(NSData *)key;
+
++ (BOOL)compare:(NSData *)a to:(NSData *)b;
 
 @end

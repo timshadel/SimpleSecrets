@@ -96,73 +96,79 @@ describe(@"primitive crypto functions", ^{
             NSData *iv = [binmessage subdataWithRange:NSMakeRange(0,16)];
             NSData *ciphertext = [binmessage subdataWithRange:NSMakeRange(16, binmessage.length - 16)];
 
-            [binmessage shouldNotBeNil];
-            [[theValue([binmessage length]) should] equal:theValue(48)];
-
             [[theValue(iv.length) should] equal:theValue(16)];
             [[theValue(ciphertext.length) should] equal:theValue(32)];
             // Try to decipher it...
-//            var recovered = primitives.decrypt(ciphertext, key, iv);
-//            expect(recovered).to.eql(data);
-//            expect(recovered).to.not.equal(data);
+            NSData *recovered = [Primitives decryptData:ciphertext withKey:key andIV:iv];
+            [[recovered should] equal:data];
         });
         
-//        it(@"should return a Buffer of (iv || ciphertext)", ^{
-//            NSData *key = makeData(0xcd, 32);
-//            NSData *data = makeData(0x11, 25);
-//            
-//            var output = primitives.encrypt(data, key);
-//            expect(output).to.be.a(Buffer);
-//            // 16-byte IV, 32 bytes to encrypt the 25 data bytes
-//            expect(output).to.have.length(48);
-//        });
+        it(@"should return a Buffer of (iv || ciphertext)", ^{
+            NSData *key = makeData(0xcd, 32);
+            NSData *data = makeData(0x11, 25);
+            
+            NSData *binmessage = [Primitives encryptData:data withKey:key];
+            [binmessage shouldNotBeNil];
+            [[binmessage should] beKindOfClass:[NSMutableData class]];
+            // 16-byte IV, 32 bytes to encrypt the 25 data bytes
+            [[theValue([binmessage length]) should] equal:theValue(48)];
+        });
     });
     
-//    describe(@"decrypt()", ^{
-//        it(@"should decrypt data using a 256-bit key", ^{
-//            NSData *key = makeData(0xcd, 32);
-//            NSData *plaintext = makeData(0x11, 25);
-//            var iv = new Buffer('d4a5794c81015dde3b9b0648f2b9f5b9', 'hex');
-//            var ciphertext = new Buffer('cb7f804ec83617144aa261f24af07023a91a3864601a666edea98938f2702dbc', 'hex');
-//            
-//            var recovered = primitives.decrypt(ciphertext, key, iv);
-//            expect(recovered).to.eql(plaintext);
-//            expect(recovered).to.not.equal(plaintext);
-//        });
-//    });
-//    
-//    describe(@"identify()", ^{
-//        it(@"should calculate an id for a key", ^{
-//            NSData *key = makeData(0xab, 32);
-//            var id = primitives.identify(key);
-//            
-//            expect(id).to.have.length(6);
-//            expect(id).to.eql(new Buffer('0d081b0889d7', 'hex'));
-//        });
-//    });
-//    
-//    describe(@"mac()", ^{
-//        it(@"should create a message authentication code", ^{
-//            NSData *key = makeData(0x9f, 32);
-//            NSData *data = makeData(0x11, 25);
-//            var mac = primitives.mac(data, key);
-//            
-//            expect(mac).to.have.length(32);
-//            expect(mac).to.eql(new Buffer('adf1793fdef44c54a2c01513c0c7e4e71411600410edbde61558db12d0a01c65', 'hex'));
-//        });
-//    });
-//    
-//    describe(@"compare()", ^{
-//        it(@"should correctly distinguish data equality", ^{
-//            NSData *a = makeData(0x11, 25);
-//            NSData *b = makeData(0x12, 25);
-//            NSData *c = makeData(0x11, 25);
-//            
-//            expect(primitives.compare(a,a)).to.be.ok();
-//            expect(primitives.compare(a,b)).to.not.be.ok();
-//            expect(primitives.compare(a,c)).to.be.ok();
-//        });
-//        
+    describe(@"decrypt()", ^{
+        it(@"should decrypt data using a 256-bit key", ^{
+            NSData *key = makeData(0xcd, 32);
+            NSData *plaintext = makeData(0x11, 25);
+            NSData *iv = hexStringToData("d4a5794c81015dde3b9b0648f2b9f5b9");
+            NSData *ciphertext = hexStringToData("cb7f804ec83617144aa261f24af07023a91a3864601a666edea98938f2702dbc");
+            
+            NSData *recovered = [Primitives decryptData:ciphertext withKey:key andIV:iv];
+            [recovered shouldNotBeNil];
+            [[recovered should] beKindOfClass:[NSMutableData class]];
+            // 16-byte IV, 32 bytes to encrypt the 25 data bytes
+            [[theValue([recovered length]) should] equal:theValue(25)];
+            [[recovered should] equal:plaintext];
+        });
+    });
+    
+    describe(@"identify()", ^{
+        it(@"should calculate an id for a key", ^{
+            NSData *key = makeData(0xab, 32);
+            NSData *ident = [Primitives identify:key];
+            NSData *expectedIdent = hexStringToData("0d081b0889d7");
+            
+            [ident shouldNotBeNil];
+            [[ident should] beKindOfClass:[NSMutableData class]];
+            [[theValue([ident length]) should] equal:theValue(6)];
+            [[ident should] equal:expectedIdent];
+        });
+    });
+    
+    describe(@"mac()", ^{
+        it(@"should create a message authentication code", ^{
+            NSData *key = makeData(0x9f, 32);
+            NSData *data = makeData(0x11, 25);
+            NSData *mac = [Primitives macForData:data withKey:key];
+            NSData *expectedMac = hexStringToData("adf1793fdef44c54a2c01513c0c7e4e71411600410edbde61558db12d0a01c65");
+            
+            [mac shouldNotBeNil];
+            [[mac should] beKindOfClass:[NSMutableData class]];
+            [[theValue([mac length]) should] equal:theValue(32)];
+            [[mac should] equal:expectedMac];
+        });
+    });
+    
+    describe(@"compare()", ^{
+        it(@"should correctly distinguish data equality", ^{
+            NSData *a = makeData(0x11, 25);
+            NSData *b = makeData(0x12, 25);
+            NSData *c = makeData(0x11, 25);
+            
+            [[theValue([Primitives compare:a to:a]) should] beTrue];
+            [[theValue([Primitives compare:a to:b]) should] beFalse];
+            [[theValue([Primitives compare:a to:c]) should] beTrue];
+        });
+        
 //        // This works fine locally, but has tons of variation on build server
 //        it.skip('should take just as long to compare different data as identical data', function() {
 //            NSData *a = makeData(0xff, 250000);
@@ -216,22 +222,24 @@ describe(@"primitive crypto functions", ^{
 //            }
 //            
 //        });
-//    });
-//    
-//    describe(@"binify()", ^{
-//        it(@"should require a base64url string", ^{
-//            expect(function(){ primitives.binify(123); }).to.throwException(/string required/i);
-//            expect(function(){ primitives.binify('arstnei; another.'); }).to.throwException(/base64url/i);
-//            expect(function(){ primitives.binify('cartinir90_-'); }).to.not.throwException();
-//        });
-//        
-//        it(@"should return a Buffer", ^{
-//            var bin = primitives.binify('abcd');
-//            expect(bin).to.be.a(Buffer);
-//            expect(bin).to.have.length(3);
-//        });
-//    });
-//    
+
+    });
+
+    
+    describe(@"binify()", ^{
+        it(@"should require a base64url string", ^{
+            expect(function(){ primitives.binify(123); }).to.throwException(/string required/i);
+            expect(function(){ primitives.binify('arstnei; another.'); }).to.throwException(/base64url/i);
+            expect(function(){ primitives.binify('cartinir90_-'); }).to.not.throwException();
+        });
+        
+        it(@"should return a Buffer", ^{
+            var bin = primitives.binify('abcd');
+            expect(bin).to.be.a(Buffer);
+            expect(bin).to.have.length(3);
+        });
+    });
+    
 //    describe(@"stringify()", ^{
 //        it(@"should require a buffer", ^{
 //            NSData *buf = makeData(0x32, 10);
