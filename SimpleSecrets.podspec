@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source_files = 'SimpleSecrets/**/*.{h,m}'
   s.public_header_files = 'SimpleSecrets/**/SimpleSecrets.h'
   s.framework  = 'Security'
-  s.library   = 'crypto'
   s.requires_arc = true
   s.dependency 'MessagePack', '~> 1.0'
+  s.dependency 'Base64', '~> 1.0'
 end

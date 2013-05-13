@@ -190,4 +190,9 @@ static NSUInteger kIdentLength = 6;
     return result == 0;
 }
 
++ (NSData *)binify:(NSString *)websafe
+{
+    
+}
+
 @end

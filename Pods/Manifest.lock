@@ -1,12 +1,15 @@
 PODS:
+  - Base64 (1.0.1)
   - Kiwi (2.0.6)
   - MessagePack (1.0.0)
 
 DEPENDENCIES:
+  - Base64 (~> 1.0)
   - Kiwi
   - MessagePack (~> 1.0)
 
 SPEC CHECKSUMS:
+  Base64: eaac9f2088ba659c5db1db960576eb0f2969ebaf
   Kiwi: 56082a80f942de4d10423d8d8a599ab30cf50228
   MessagePack: 66a565c0c34ecdd83a84ae090d1a04ef24c88beb
 

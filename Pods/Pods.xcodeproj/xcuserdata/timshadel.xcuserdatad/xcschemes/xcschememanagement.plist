@@ -9,17 +9,62 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>1</integer>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>28DE7CA3A3834170A3A4E71E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>448C896D4BFE4468B1B1F063</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A7843EF3CEA465D8EC07168</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AAD342BCB42448A8C4A7F81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C24D897D6D942A7AB096447</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9D1EF9A8480456AB446E731</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CDD2AC1BD68B433EBD4FBDFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D2ADA48F1507425F86ABC49F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DEE13CC0789140AE88B3A16E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9723EE20C264D3F9B8316C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
