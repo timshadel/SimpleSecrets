@@ -12,6 +12,8 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonHMAC.h>
 #import <Base64/MF_Base64Additions.h>
+#import <MessagePack/MessagePackPacker.h>
+#import <MessagePack/MessagePackParser.h>
 
 static NSUInteger kNonceLength = 16;
 static NSUInteger kIVLength = 16;
@@ -205,6 +207,16 @@ static NSUInteger kIdentLength = 6;
     [base64 replaceOccurrencesOfString:@"+" withString:@"-" options:0 range:NSMakeRange(0, base64.length)];
     [base64 replaceOccurrencesOfString:@"/" withString:@"_" options:0 range:NSMakeRange(0, base64.length)];
     return [base64 stringByReplacingOccurrencesOfString:@"=" withString:@""];
+}
+
++ (NSData *)serialize:(id)object
+{
+    return [MessagePackPacker pack:object];
+}
+
++ (id)deserialize:(NSData *)buffer
+{
+    return [MessagePackParser parseData:buffer];
 }
 
 @end

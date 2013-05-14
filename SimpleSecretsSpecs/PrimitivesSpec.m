@@ -240,40 +240,29 @@ describe(@"primitive crypto functions", ^{
             NSData *buf = makeData(0x32, 10);
             NSString *str = [Primitives stringify:buf];
             [[theValue(str.length) should] equal:theValue(14)];
-//            expect(str).to.match(/^[a-zA-Z0-9_-]+$/);
+            [[str should] matchPattern:@"^[a-zA-Z0-9_-]+$"];
         });
     });
     
-//    describe(@"serialize()", ^{
-//        it(@"should accept javascript object", ^{
-//            expect(function(){ primitives.serialize(1); }).to.not.throwException();
-//            expect(function(){ primitives.serialize('a'); }).to.not.throwException();
-//            expect(function(){ primitives.serialize([]); }).to.not.throwException();
-//            expect(function(){ primitives.serialize({}); }).to.not.throwException();
-//        });
-//        
-//        it(@"should return a Buffer", ^{
-//            var bin = primitives.serialize('abcd');
-//            expect(bin).to.be.a(Buffer);
-//            expect(bin).to.have.length(5);
-//        });
-//    });
-//    
-//    describe(@"deserialize()", ^{
-//        it(@"should require a buffer", ^{
-//            NSData *buf = makeData(0x32, 10);
-//            expect(function(){ primitives.deserialize(''); }).to.throwException(/not a buffer/i);
-//            expect(function(){ primitives.deserialize(buf); }).not.to.throwException();
-//        });
-//        
-//        it(@"should return a javascript primitive or object", ^{
-//            expect(primitives.deserialize(primitives.serialize(1))).to.eql(1);
-//            expect(primitives.deserialize(primitives.serialize('abcd'))).to.eql('abcd');
-//            expect(primitives.deserialize(primitives.serialize([]))).to.eql([]);
-//            expect(primitives.deserialize(primitives.serialize({}))).to.eql({});
-//        });
-//    });
-//    
+    describe(@"serialize()", ^{
+        it(@"should return a Buffer", ^{
+            NSData *bin = [Primitives serialize:@"abcd"];
+            [[theValue(bin.length) should] equal:theValue(5)];
+        });
+    });
+    
+    describe(@"deserialize()", ^{
+        it(@"should return a native primitive or object", ^{
+            [[[Primitives deserialize:[Primitives serialize:[NSNumber numberWithInt:1]]] should] equal:theValue(1)];
+            [[[Primitives deserialize:[Primitives serialize:@"abcd"]] should] equal:@"abcd"];
+            [[[Primitives deserialize:[Primitives serialize:@[]]] should] equal:@[]];
+            [[[Primitives deserialize:[Primitives serialize:@{}]] should] equal:@{}];
+            [[[Primitives deserialize:[Primitives serialize:[NSNull null]]] should] equal:[NSNull null]];
+            [[[Primitives deserialize:[Primitives serialize:@YES]] should] beYes];
+            [[Primitives deserialize:[Primitives serialize:nil]] shouldBeNil];
+        });
+    });
+    
 //    describe(@"zero()", ^{
 //        
 //        it(@"should require a Buffer", ^{

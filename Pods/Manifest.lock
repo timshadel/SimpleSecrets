@@ -5,8 +5,13 @@ PODS:
 
 DEPENDENCIES:
   - Base64 (~> 1.0)
-  - Kiwi
+  - Kiwi (from `https://github.com/allending/Kiwi.git`, branch `master`)
   - MessagePack (~> 1.0)
+
+EXTERNAL SOURCES:
+  Kiwi:
+    :branch: master
+    :git: https://github.com/allending/Kiwi.git
 
 SPEC CHECKSUMS:
   Base64: eaac9f2088ba659c5db1db960576eb0f2969ebaf

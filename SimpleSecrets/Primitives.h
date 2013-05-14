@@ -26,4 +26,8 @@
 + (NSData *)binify:(NSString *)websafe;
 + (NSString *)stringify:(NSData *)binary;
 
++ (NSData *)serialize:(id)object;
++ (id)deserialize:(NSData *)buffer;
+
+
 @end
