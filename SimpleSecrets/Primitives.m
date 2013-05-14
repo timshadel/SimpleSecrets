@@ -219,4 +219,17 @@ static NSUInteger kIdentLength = 6;
     return [MessagePackParser parseData:buffer];
 }
 
++ (void)zero:(NSMutableData *)buffer, ...
+{
+    id eachObject;
+    va_list argumentList;
+    if (buffer) { // The first argument isn't part of the varargs list,
+        [buffer resetBytesInRange:NSMakeRange(0, buffer.length)];
+        va_start(argumentList, buffer); // Start scanning for arguments after firstObject.
+        while ((eachObject = va_arg(argumentList, id))) // As many times as we can get an argument of type "id"
+            [eachObject resetBytesInRange:NSMakeRange(0, buffer.length)];
+        va_end(argumentList);
+    }
+}
+
 @end

@@ -263,45 +263,31 @@ describe(@"primitive crypto functions", ^{
         });
     });
     
-//    describe(@"zero()", ^{
-//        
-//        it(@"should require a Buffer", ^{
-//            expect(function(){ primitives.zero({}); }).to.throwException(/not a buffer/i);
-//        });
-//        
-//        it(@"should overwrite all buffer contents with zeros", ^{
-//            var b = new Buffer([74, 68, 69, 73, 20, 69, 73, 20, 73, 0x6f, 0x6d, 65]);
-//            var z = new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-//            
-//            // different contents
-//            expect(b).not.to.eql(z);
-//            
-//            primitives.zero(b);
-//            
-//            // different identity, same contents
-//            expect(b).not.to.equal(z);
-//            expect(b).to.eql(z);
-//        });
-//        
-//        it(@"should zero multiple buffers", ^{
-//            var b = new Buffer([74, 68, 69, 73, 20, 69, 73, 20, 73, 0x6f, 0x6d, 65]);
-//            var c = new Buffer([69, 73, 20, 73, 0x6f, 0x6d, 65, 74, 68, 69, 73, 20]);
-//            var z = new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-//            
-//            // different contents
-//            expect(b).not.to.eql(z);
-//            expect(c).not.to.eql(z);
-//            
-//            primitives.zero(b, c);
-//            
-//            // different identity, same contents
-//            expect(b).not.to.equal(z);
-//            expect(b).to.eql(z);
-//            expect(c).not.to.equal(z);
-//            expect(c).to.eql(z);
-//        });
-//        
-//    });
+    describe(@"zero()", ^{
+        
+        it(@"should overwrite all buffer contents with zeros", ^{
+            NSMutableData *b = [hexStringToData("7468697320697320736f6d65") mutableCopy];
+            NSData *z = hexStringToData("000000000000000000000000");
+            
+            [[b shouldNot] equal:z];
+            [Primitives zero:b,nil];
+            [[b should] equal:z];
+        });
+        
+        it(@"should zero multiple buffers", ^{
+            NSMutableData *b = [hexStringToData("7468697320697320736f6d65") mutableCopy];
+            NSMutableData *c = [hexStringToData("697320736f6d657468697320") mutableCopy];
+            NSData *z = hexStringToData("000000000000000000000000");
+            
+            // different contents
+            [[b shouldNot] equal:z];
+            [[c shouldNot] equal:z];
+            [Primitives zero:b,c,nil];
+            [[b should] equal:z];
+            [[c should] equal:z];
+        });
+        
+    });
 
     
 });

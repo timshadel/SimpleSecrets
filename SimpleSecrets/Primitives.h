@@ -29,5 +29,6 @@
 + (NSData *)serialize:(id)object;
 + (id)deserialize:(NSData *)buffer;
 
++ (void)zero:(NSMutableData *)buffer, ...; // This method takes a nil-terminated list of objects.
 
 @end
