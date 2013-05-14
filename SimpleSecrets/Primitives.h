@@ -24,5 +24,6 @@
 
 + (BOOL)compare:(NSData *)a to:(NSData *)b;
 + (NSData *)binify:(NSString *)websafe;
++ (NSString *)stringify:(NSData *)binary;
 
 @end

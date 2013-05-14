@@ -235,22 +235,15 @@ describe(@"primitive crypto functions", ^{
         });
     });
     
-//    describe(@"stringify()", ^{
-//        it(@"should require a buffer", ^{
-//            NSData *buf = makeData(0x32, 10);
-//            expect(function(){ primitives.stringify(''); }).to.throwException(/not a buffer/i);
-//            expect(function(){ primitives.stringify(buf); }).not.to.throwException();
-//        });
-//        
-//        it(@"should return a base64url string", ^{
-//            NSData *buf = makeData(0x32, 10);
-//            var str = primitives.stringify(buf);
-//            expect(str).to.be.a('string');
-//            expect(str).to.have.length(14);
+    describe(@"stringify()", ^{
+        it(@"should return a base64url string", ^{
+            NSData *buf = makeData(0x32, 10);
+            NSString *str = [Primitives stringify:buf];
+            [[theValue(str.length) should] equal:theValue(14)];
 //            expect(str).to.match(/^[a-zA-Z0-9_-]+$/);
-//        });
-//    });
-//    
+        });
+    });
+    
 //    describe(@"serialize()", ^{
 //        it(@"should accept javascript object", ^{
 //            expect(function(){ primitives.serialize(1); }).to.not.throwException();

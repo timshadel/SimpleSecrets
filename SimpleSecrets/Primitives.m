@@ -199,4 +199,12 @@ static NSUInteger kIdentLength = 6;
     return [MF_Base64Codec dataFromBase64String:base64url];
 }
 
++ (NSString *)stringify:(NSData *)binary
+{
+    NSMutableString *base64 = [[binary base64String] mutableCopy];
+    [base64 replaceOccurrencesOfString:@"+" withString:@"-" options:0 range:NSMakeRange(0, base64.length)];
+    [base64 replaceOccurrencesOfString:@"/" withString:@"_" options:0 range:NSMakeRange(0, base64.length)];
+    return [base64 stringByReplacingOccurrencesOfString:@"=" withString:@""];
+}
+
 @end
