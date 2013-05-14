@@ -91,9 +91,9 @@ static NSUInteger kIdentLength = 6;
 
     CCCryptorStatus
     result = CCCrypt(kCCEncrypt, // operation
-                     kCCAlgorithmAES128, // Algorithm
+                     kCCAlgorithmAES128, // AES-256 has a 128-bit block size...
                      kCCOptionPKCS7Padding, // options
-                     key.bytes, // key
+                     key.bytes, // key; this is a 256-bit key...
                      key.length, // keylength
                      iv.bytes,// iv
                      data.bytes, // dataIn
@@ -198,7 +198,7 @@ static NSUInteger kIdentLength = 6;
     NSMutableString *base64url = [websafe mutableCopy];
     [base64url replaceOccurrencesOfString:@"-" withString:@"+" options:0 range:NSMakeRange(0, base64url.length)];
     [base64url replaceOccurrencesOfString:@"_" withString:@"/" options:0 range:NSMakeRange(0, base64url.length)];
-    return [MF_Base64Codec dataFromBase64String:base64url];
+    return [[MF_Base64Codec dataFromBase64String:base64url] mutableCopy];
 }
 
 + (NSString *)stringify:(NSData *)binary
@@ -209,9 +209,9 @@ static NSUInteger kIdentLength = 6;
     return [base64 stringByReplacingOccurrencesOfString:@"=" withString:@""];
 }
 
-+ (NSData *)serialize:(id)object
++ (NSMutableData *)serialize:(id)object
 {
-    return [MessagePackPacker pack:object];
+    return [[MessagePackPacker pack:object] mutableCopy];
 }
 
 + (id)deserialize:(NSData *)buffer

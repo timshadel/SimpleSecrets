@@ -23,10 +23,10 @@
 + (NSMutableData *)macForData:(NSData *)data withKey:(NSData *)key;
 
 + (BOOL)compare:(NSData *)a to:(NSData *)b;
-+ (NSData *)binify:(NSString *)websafe;
++ (NSMutableData *)binify:(NSString *)websafe;
 + (NSString *)stringify:(NSData *)binary;
 
-+ (NSData *)serialize:(id)object;
++ (NSMutableData *)serialize:(id)object;
 + (id)deserialize:(NSData *)buffer;
 
 + (void)zero:(NSMutableData *)buffer, ...; // This method takes a nil-terminated list of objects.
