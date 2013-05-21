@@ -18,6 +18,7 @@
 		B03783CF173F3E5F000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
 		B03783D0173F3E80000D8D09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03783CE173F3E5F000D8D09 /* Security.framework */; };
 		B03783D3173F5F43000D8D09 /* hexString.c in Sources */ = {isa = PBXBuildFile; fileRef = B03783D2173F5F43000D8D09 /* hexString.c */; };
+		B071CCA0174BFCCD00AE8303 /* PacketSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B071CC9F174BFCCD00AE8303 /* PacketSpec.m */; };
 		B0F7C4D7173F319700275A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F7C4D6173F319700275A2D /* Foundation.framework */; };
 		B0F7C4DC173F319700275A2D /* SimpleSecrets.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B0F7C4DB173F319700275A2D /* SimpleSecrets.h */; };
 		B0F7C4DE173F319700275A2D /* SimpleSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7C4DD173F319700275A2D /* SimpleSecrets.m */; };
@@ -66,6 +67,7 @@
 		B03783D4173F5F61000D8D09 /* hexString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hexString.h; sourceTree = "<group>"; };
 		B04DCE07173F325000E62CA1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B04DCE09173F325000E62CA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B071CC9F174BFCCD00AE8303 /* PacketSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketSpec.m; sourceTree = "<group>"; };
 		B0F7C4D3173F319700275A2D /* libSimpleSecrets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleSecrets.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F7C4D6173F319700275A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0F7C4DA173F319700275A2D /* SimpleSecrets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleSecrets-Prefix.pch"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		B0335B4E173F37B300B6F01C /* SimpleSecretsSpecs */ = {
 			isa = PBXGroup;
 			children = (
+				B071CC9F174BFCCD00AE8303 /* PacketSpec.m */,
 				B03783C9173F3BCC000D8D09 /* PrimitivesSpec.m */,
 				B03783D1173F5F1D000D8D09 /* Utilities */,
 				B0335B4F173F37B300B6F01C /* Supporting Files */,
@@ -348,6 +351,7 @@
 			files = (
 				B03783CA173F3BCC000D8D09 /* PrimitivesSpec.m in Sources */,
 				B03783D3173F5F43000D8D09 /* hexString.c in Sources */,
+				B071CCA0174BFCCD00AE8303 /* PacketSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
